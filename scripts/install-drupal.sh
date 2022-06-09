@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-#
+
+# set -x
+
 # Download and install Drupal 8 projects for DockerComposeDrupal.
 #
 # Usage:

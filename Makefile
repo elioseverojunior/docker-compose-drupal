@@ -6,8 +6,8 @@ GID=$$(id -g $$USER)
 setup: clean-setup
 	@cp ./docker-compose.tpl.yml ./docker-compose.yml;
 	@cp ./default.env ./.env;
-	@sed -i "s/LOCAL_UID=1000/LOCAL_UID=$(UID)/g" ./.env;
-	@sed -i "s/LOCAL_GID=1000/LOCAL_GID=$(GID)/g" ./.env;
+	@sed -i '' -e "s/LOCAL_UID=1000/LOCAL_UID=$(UID)/g" ./.env;
+	@sed -i '' -e "s/LOCAL_GID=1000/LOCAL_GID=$(GID)/g" ./.env;
 
 up:
 	@docker-compose up -d --build;
@@ -27,7 +27,7 @@ demo: setup
 	@cp -f ./samples/apache_mysql_php.yml ./docker-compose.yml;
 	@docker-compose up -d --build;
 	@sleep 15s;
-	@scripts/install-drupal.sh install -p drupal-demo;
+	@scripts/install-drupal.sh install -p drupal;
 
 nuke:
 	@docker-compose down;
